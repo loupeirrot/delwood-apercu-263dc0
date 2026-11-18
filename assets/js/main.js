@@ -8,19 +8,36 @@
   var navRoot = document.documentElement;
 
   if (navToggle) {
+    var setMenu = function (open) {
+      navRoot.classList.toggle("nav-open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+
     navToggle.addEventListener("click", function () {
-      var isOpen = navRoot.classList.toggle("nav-open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      document.body.style.overflow = isOpen ? "hidden" : "";
+      setMenu(!navRoot.classList.contains("nav-open"));
     });
 
     document.querySelectorAll(".nav-mobile a").forEach(function (link) {
       link.addEventListener("click", function () {
-        navRoot.classList.remove("nav-open");
-        navToggle.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
+        setMenu(false);
       });
     });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && navRoot.classList.contains("nav-open")) {
+        setMenu(false);
+        navToggle.focus();
+      }
+    });
+  }
+
+  /* Vidéo d'accueil : pas de lecture automatique si l'utilisateur réduit les animations */
+  var heroVideo = document.getElementById("hero-video");
+  if (heroVideo && reduceMotion) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.pause();
   }
 
   /* Révélations au scroll --------------------------------------------------- */

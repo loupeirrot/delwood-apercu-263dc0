@@ -669,11 +669,14 @@ main section[id] {
   justify-content: center;
   padding: var(--gutter);
   transform: translateY(-100%);
-  transition: transform var(--dur-med) var(--ease);
+  visibility: hidden;
+  transition: transform var(--dur-med) var(--ease), visibility 0s linear var(--dur-med);
 }
 
 .nav-open .nav-mobile {
   transform: translateY(0);
+  visibility: visible;
+  transition: transform var(--dur-med) var(--ease), visibility 0s;
 }
 
 .nav-mobile ul {
