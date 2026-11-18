@@ -356,6 +356,31 @@ h4,
   padding-bottom: 0.08em;
 }
 
+/* --- Surfaces du navigateur et confort de lecture ------------------------------ */
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+h1,
+h2,
+h3,
+.display,
+.quote,
+.lead {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.cv-year,
+.index-row__num,
+.artwork__detail {
+  font-variant-numeric: tabular-nums;
+}
+
 /* --- Grille / conteneurs ----------------------------------------------------- */
 .container {
   width: 100%;
