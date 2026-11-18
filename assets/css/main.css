@@ -962,24 +962,26 @@ main section[id] {
 }
 
 /* --- Révélation au scroll ---------------------------------------------------------- */
-.reveal {
+/* Les états masqués ne s'appliquent que si JavaScript a démarré (classe .js posée
+   dans le <head>) : sans script ou à l'impression, tout le contenu reste visible. */
+.js .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(14px);
   transition: opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
 }
 
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal-stagger > * {
+.js .reveal-stagger > * {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(14px);
   transition: opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
 }
 
-.reveal-stagger.is-visible > * {
+.js .reveal-stagger.is-visible > * {
   opacity: 1;
   transform: translateY(0);
 }
@@ -992,8 +994,8 @@ main section[id] {
 .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 450ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal-stagger > * {
+  .js .reveal,
+  .js .reveal-stagger > * {
     opacity: 1;
     transform: none;
     transition: none;
@@ -1401,5 +1403,55 @@ main section[id] {
   .index-row__meta {
     grid-column: 1 / -1;
     text-align: left;
+  }
+}
+
+/* --- Impression (le site doit rester crédible imprimé en PDF) ------------------------------ */
+@media print {
+  .site-header,
+  .nav-mobile,
+  .skip-link,
+  .hero-media video,
+  .video-embed__play,
+  .marquee,
+  .filters,
+  form {
+    display: none !important;
+  }
+
+  .js .reveal,
+  .js .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero {
+    min-height: 0;
+    padding-top: 3rem;
+  }
+
+  .section--ink,
+  .site-footer,
+  .hero {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .hero-content,
+  .hero-eyebrow,
+  .hero-sub,
+  .hero-tagline,
+  .section--ink .lead,
+  .site-footer p,
+  .site-footer a,
+  .footer-bottom {
+    color: #000 !important;
+  }
+
+  .media,
+  .video-embed,
+  .index-row,
+  .cv-list li {
+    break-inside: avoid;
   }
 }
