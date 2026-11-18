@@ -65,27 +65,6 @@
     });
   }
 
-  /* Façade vidéo Vimeo (lazy embed) -------------------------------------------- */
-  document.querySelectorAll("[data-video-embed]").forEach(function (facade) {
-    facade.addEventListener("click", function () {
-      var vimeoId = facade.getAttribute("data-video-embed");
-      var iframe = document.createElement("iframe");
-      iframe.src = "https://player.vimeo.com/video/" + vimeoId + "?autoplay=1&title=0&byline=0&portrait=0";
-      iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture");
-      iframe.setAttribute("allowfullscreen", "");
-      iframe.setAttribute("title", facade.getAttribute("data-video-title") || "Vidéo Delwood");
-      facade.innerHTML = "";
-      facade.appendChild(iframe);
-    });
-
-    facade.addEventListener("keydown", function (event) {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        facade.click();
-      }
-    });
-  });
-
   /* Façade vidéo YouTube (lazy embed) ------------------------------------------ */
   document.querySelectorAll("[data-youtube-embed]").forEach(function (facade) {
     facade.addEventListener("click", function () {

@@ -272,13 +272,6 @@ h3 {
   color: inherit;
 }
 
-.display--hero {
-  font-size: var(--step-hero);
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 0.94;
-}
-
 h1,
 .h1 {
   font-size: var(--step-h1);
@@ -463,15 +456,6 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Colonnes asymétriques réutilisables */
-.split-8-4 {
-  grid-column: span 12;
-}
-
-.split-7-5 {
-  grid-column: span 12;
-}
-
 @media (min-width: 768px) {
   /* grid-column-end (longhand) so it composes cleanly with .col-start-N below,
      instead of the grid-column shorthand which would reset grid-column-start */
@@ -482,7 +466,6 @@ p {
   .col-4 { grid-column-end: span 4; }
   .col-3 { grid-column-end: span 3; }
   .col-start-4 { grid-column-start: 4; }
-  .col-start-5 { grid-column-start: 5; }
   .col-start-6 { grid-column-start: 6; }
   .col-start-7 { grid-column-start: 7; }
   .col-start-8 { grid-column-start: 8; }
@@ -548,12 +531,6 @@ p {
 .section--ink .btn:hover {
   background: var(--paper);
   color: var(--ink);
-}
-
-.btn-icon {
-  width: 1em;
-  height: 1em;
-  flex: none;
 }
 
 .link-arrow {
@@ -962,11 +939,6 @@ a:hover .media img,
 }
 
 /* --- Cartel façon musée (œuvres) --------------------------------------------------- */
-.artwork {
-  display: flex;
-  flex-direction: column;
-}
-
 .artwork__meta {
   margin-top: 1rem;
   padding-top: 0.9rem;
@@ -1043,12 +1015,6 @@ a:hover .media img,
 }
 
 /* --- Filet / séparateurs ------------------------------------------------------------ */
-.rule {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 0;
-}
-
 .index-list {
   border-top: 1px solid var(--line-strong);
 }
