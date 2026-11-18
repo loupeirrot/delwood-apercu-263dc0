@@ -29,7 +29,7 @@ Rien n'est configuré à ce jour. Deux options.
 2. Créer à la racine un fichier `CNAME` contenant une seule ligne : `delwood.fr`. (Non créé : à faire seulement si cette option est retenue.)
 3. Chez le registrar, dans la zone DNS de `delwood.fr` :
    * quatre enregistrements `A` sur le domaine nu (`@`) : `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` ;
-   * un enregistrement `CNAME` pour `www` vers `loupeirrot.github.io` ;
+   * un enregistrement `CNAME` pour `www` vers le nom d'hôte GitHub Pages du compte propriétaire du dépôt (indiqué dans Settings, Pages) ;
    * supprimer tout autre enregistrement `A`, `AAAA` ou `CNAME` en conflit sur ces noms.
 4. Sur GitHub : Settings, Pages, champ « Custom domain » : `delwood.fr`, puis cocher « Enforce HTTPS » dès que le certificat est prêt (quelques minutes à quelques heures après la propagation DNS).
 5. Vérifier `https://delwood.fr/`, `https://delwood.fr/entreprises.html` et une adresse inexistante (la page 404 doit s'afficher).

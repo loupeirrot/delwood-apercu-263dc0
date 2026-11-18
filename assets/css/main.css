@@ -112,7 +112,7 @@
 /* polices:fin */
 
 /* ==========================================================================
-   DELWOOD — Système de design
+   DELWOOD - Système de design
    Structure noir/blanc, accent rouge basque, typographie éditoriale.
    ========================================================================== */
 
@@ -734,6 +734,10 @@ main section[id] {
 
 .footer-brand .logo {
   color: var(--paper);
+}
+
+.footer-brand .logo span {
+  color: var(--accent-soft);
 }
 
 .footer-brand p {
