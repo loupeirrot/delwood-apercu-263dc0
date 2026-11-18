@@ -949,6 +949,18 @@ main section[id] {
   flex-wrap: wrap;
 }
 
+/* Survol : la photo d'un projet lié et la miniature d'une vidéo zooment légèrement
+   dans leur cadre (le cadre a déjà overflow: hidden). */
+a .media img,
+.video-embed > img {
+  transition: transform var(--dur-slow) var(--ease);
+}
+
+a:hover .media img,
+.video-embed:hover > img {
+  transform: scale(1.03);
+}
+
 /* --- Cartel façon musée (œuvres) --------------------------------------------------- */
 .artwork {
   display: flex;
