@@ -113,11 +113,15 @@
 
   if (filterButtons.length && filterItems.length) {
     filterButtons.forEach(function (btn) {
+      btn.setAttribute("aria-pressed", btn.classList.contains("is-active") ? "true" : "false");
+
       btn.addEventListener("click", function () {
         filterButtons.forEach(function (b) {
           b.classList.remove("is-active");
+          b.setAttribute("aria-pressed", "false");
         });
         btn.classList.add("is-active");
+        btn.setAttribute("aria-pressed", "true");
 
         var value = btn.getAttribute("data-filter");
 

@@ -740,7 +740,7 @@ main section[id] {
   max-width: 34ch;
 }
 
-.footer-col h4 {
+.footer-col__title {
   color: rgba(241, 239, 232, 0.5);
   font-family: var(--font-mono);
   font-size: var(--step-caption);
