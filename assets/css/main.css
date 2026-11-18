@@ -412,7 +412,7 @@ h4,
 
 .section--ink .field input::placeholder,
 .section--ink .field textarea::placeholder {
-  color: rgba(241, 239, 232, 0.4);
+  color: rgba(241, 239, 232, 0.6);
 }
 
 .section--ink .field input:focus,
@@ -426,7 +426,7 @@ h4,
 }
 
 .section--ink .field-hint {
-  color: rgba(241, 239, 232, 0.45);
+  color: rgba(241, 239, 232, 0.62);
 }
 
 .section-head {
@@ -772,7 +772,7 @@ main section[id] {
   padding-top: 1.75rem;
   font-family: var(--font-mono);
   font-size: var(--step-caption);
-  color: rgba(241, 239, 232, 0.45);
+  color: rgba(241, 239, 232, 0.62);
 }
 
 .footer-bottom a {
@@ -1184,7 +1184,7 @@ main section[id] {
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: rgba(58, 54, 47, 0.62);
+  color: rgba(58, 54, 47, 0.8);
 }
 
 .field input:focus,
@@ -1197,7 +1197,7 @@ main section[id] {
 .field-hint {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: rgba(58, 54, 47, 0.6);
+  color: rgba(58, 54, 47, 0.8);
 }
 
 /* --- Tags / filtres (œuvres) ------------------------------------------------------------ */
