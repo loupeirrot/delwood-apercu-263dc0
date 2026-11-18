@@ -130,9 +130,13 @@
   }
 
   /* Formulaire de contact (mailto, sans backend) ------------------------------------ */
+  // À VALIDER : adresse issue de l'ancien site (2024), à confirmer avec l'artiste
+  var CONTACT_EMAIL = "art.delwood@gmail.com";
   var contactForm = document.querySelector("[data-contact-form]");
 
   if (contactForm) {
+    // La validation native du navigateur (champs required, format de l'email)
+    // s'exécute avant cet écouteur : il ne se déclenche que si le formulaire est valide.
     contactForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -151,8 +155,18 @@
       var subject = encodeURIComponent("Nouveau projet - " + (data.get("type_projet") || "Delwood"));
       var body = encodeURIComponent(lines.join("\n"));
 
-      // À VALIDER : adresse issue de l'ancien site (2024), à confirmer avec l'artiste
-      window.location.href = "mailto:art.delwood@gmail.com?subject=" + subject + "&body=" + body;
+      var status = contactForm.querySelector("[data-form-status]");
+      if (!status) {
+        status = document.createElement("p");
+        status.className = "field-hint";
+        status.setAttribute("data-form-status", "");
+        status.setAttribute("role", "status");
+        status.style.marginTop = "1rem";
+        contactForm.appendChild(status);
+      }
+      status.textContent = "Votre messagerie s'ouvre avec le message prêt à envoyer. Si rien ne se passe, écrivez directement à " + CONTACT_EMAIL + ".";
+
+      window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + body;
     });
   }
 
