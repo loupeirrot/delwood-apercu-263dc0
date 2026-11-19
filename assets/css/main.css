@@ -112,7 +112,7 @@
 /* polices:fin */
 
 /* ==========================================================================
-   DELWOOD — Système de design
+   DELWOOD - Système de design
    Structure noir/blanc, accent rouge basque, typographie éditoriale.
    ========================================================================== */
 
@@ -734,6 +734,10 @@ main section[id] {
 
 .footer-brand .logo {
   color: var(--paper);
+}
+
+.footer-brand .logo span {
+  color: var(--accent-soft);
 }
 
 .footer-brand p {
@@ -1397,6 +1401,215 @@ a:hover .media img,
 .proof-list p {
   color: var(--ink-soft);
   max-width: 46ch;
+}
+
+/* --- Page Entreprises et mentions légales ----------------------------------------------------- */
+.btn--wrap {
+  white-space: normal;
+  width: auto;
+  max-width: 100%;
+  text-align: left;
+}
+
+.todo {
+  font-family: var(--font-mono);
+  font-size: var(--step-small);
+}
+
+.offer-grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .offer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .offer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.offer p {
+  color: var(--ink-soft);
+}
+
+.offer .caption {
+  margin-top: auto;
+  padding-top: 0.6rem;
+}
+
+.ref {
+  display: grid;
+  gap: 1.2rem 2.5rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding-block: 1.8rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.ref:last-child {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.ref p {
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin-top: 0.7rem;
+}
+
+@media (min-width: 768px) {
+  .ref {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ref--photo {
+    grid-template-columns: 16rem minmax(0, 1fr);
+  }
+}
+
+.steps {
+  counter-reset: step;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.steps li {
+  counter-increment: step;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.steps li::before {
+  content: "0" counter(step);
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.steps p {
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+}
+
+.callout {
+  padding: 1.6rem 1.8rem;
+  border-left: 3px solid var(--accent);
+  background: var(--paper-shade);
+}
+
+.callout p {
+  margin-top: 0.7rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.section--shade .callout {
+  background: var(--paper);
+}
+
+.faq details {
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq details:last-child {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1.2rem;
+  font-family: var(--font-body);
+  font-size: var(--step-lead);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  flex: none;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.faq details[open] summary::after {
+  content: "\2212";
+}
+
+.faq details > p {
+  padding-bottom: 1.4rem;
+  max-width: 62ch;
+  color: var(--ink-soft);
+}
+
+.contact-routes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact-routes .field-hint {
+  color: rgba(241, 239, 232, 0.6);
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  max-width: 46rem;
+}
+
+.legal__block {
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.legal__block .body-text {
+  margin-top: 0.8rem;
+}
+
+.legal__block .body-text + .body-text {
+  margin-top: 1rem;
 }
 
 /* --- Responsive : ajustements ponctuels ---------------------------------------------------- */

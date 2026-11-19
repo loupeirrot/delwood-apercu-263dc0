@@ -112,6 +112,18 @@
     });
   }
 
+  /* Origine du message : ?utm_campaign=<slug> remplit le champ caché « Origine » ------ */
+  var origineField = document.getElementById("origine");
+  if (origineField) {
+    try {
+      var campaign = new URLSearchParams(window.location.search).get("utm_campaign") || "";
+      // Pages dédiées /pour/<slug>/ : sans paramètre, le slug de l'adresse sert d'origine
+      var dedicated = window.location.pathname.match(/\/pour\/([a-z0-9-]+)\//);
+      if (!campaign && dedicated) campaign = dedicated[1];
+      origineField.value = campaign.replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 60);
+    } catch (e) {}
+  }
+
   /* Formulaire de contact (mailto, sans backend) ------------------------------------ */
   // À VALIDER : adresse issue de l'ancien site (2024), à confirmer avec l'artiste
   var CONTACT_EMAIL = "aurelien@delwood.fr";
@@ -124,16 +136,19 @@
       event.preventDefault();
 
       var data = new FormData(contactForm);
-      var lines = [
-        "Nom : " + (data.get("nom") || ""),
-        "Organisation : " + (data.get("organisation") || ""),
+      var lines = ["Nom : " + (data.get("nom") || "")];
+      // Champs présents selon la page : Organisation (contact), Entreprise et Fonction (page Entreprises)
+      [["organisation", "Organisation"], ["entreprise", "Entreprise"], ["fonction", "Fonction"]].forEach(function (f) {
+        if (data.has(f[0])) lines.push(f[1] + " : " + (data.get(f[0]) || ""));
+      });
+      lines.push(
         "Email : " + (data.get("email") || ""),
         "Type de projet : " + (data.get("type_projet") || ""),
         "Lieu : " + (data.get("lieu") || ""),
-        "Budget indicatif : " + (data.get("budget") || ""),
-        "",
-        (data.get("message") || "")
-      ];
+        "Budget indicatif : " + (data.get("budget") || "")
+      );
+      if (data.get("origine")) lines.push("Origine : " + data.get("origine"));
+      lines.push("", (data.get("message") || ""));
 
       var subject = encodeURIComponent("Nouveau projet - " + (data.get("type_projet") || "Delwood"));
       var body = encodeURIComponent(lines.join("\n"));
