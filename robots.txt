@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /pour/
 
 Sitemap: https://delwood.fr/sitemap.xml

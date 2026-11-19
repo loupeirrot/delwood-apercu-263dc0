@@ -18,7 +18,7 @@ Site statique (HTML, CSS, un fichier JavaScript). Aucun outil de compilation : l
 2. Dans `pour/<slug>/index.html`, remplacer `{{Entreprise}}`, `{{accroche}}`, `{{offre}}` et `{{projection}}`.
    Écrire les valeurs avec leurs entités HTML si elles contiennent `&`, `<`, `>` ou un guillemet droit (`&amp;`, `&lt;`, `&gt;`, `&quot;`) : `{{Entreprise}}` apparaît dans le titre et dans un attribut `value`.
 3. Dans le mail, envoyer `https://delwood.fr/pour/<slug>/`. Le champ caché « Origine » du formulaire reprend le slug de l'adresse. Sur `entreprises.html`, il reprend `?utm_campaign=<slug>`.
-4. Ne pas ajouter `pour/` au plan du site : `robots.txt` l'exclut déjà.
+4. Ne pas ajouter `pour/` au plan du site. Ne pas non plus l'interdire dans `robots.txt` : un robot qui ne peut pas lire la page ne verrait pas son `noindex`, et `robots.txt` annoncerait l'existence du dossier. Les pages ne sont reliées depuis aucune autre page.
 
 ## Mise en ligne sur delwood.fr
 
