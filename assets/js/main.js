@@ -114,7 +114,7 @@
 
   /* Formulaire de contact (mailto, sans backend) ------------------------------------ */
   // À VALIDER : adresse issue de l'ancien site (2024), à confirmer avec l'artiste
-  var CONTACT_EMAIL = "art.delwood@gmail.com";
+  var CONTACT_EMAIL = "aurelien@delwood.fr";
   var contactForm = document.querySelector("[data-contact-form]");
 
   if (contactForm) {
