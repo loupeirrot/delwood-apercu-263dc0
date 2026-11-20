@@ -1612,6 +1612,53 @@ a:hover .media img,
   margin-top: 1rem;
 }
 
+/* --- Page Chemin de vie : choix de format ---------------------------------------------------- */
+.choices {
+  border: 0;
+  padding: 0;
+  margin: 1.75rem 0 0;
+  min-width: 0;
+}
+
+.choices legend {
+  padding: 0;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(241, 239, 232, 0.6);
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-block: 0.45rem;
+  cursor: pointer;
+}
+
+.choice input {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  accent-color: var(--accent-soft);
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+  color: var(--ink-soft);
+}
+
+.checklist li::marker {
+  color: var(--accent);
+}
+
 /* --- Responsive : ajustements ponctuels ---------------------------------------------------- */
 @media (max-width: 767px) {
   .grid {

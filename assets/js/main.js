@@ -137,18 +137,25 @@
 
       var data = new FormData(contactForm);
       var lines = ["Nom : " + (data.get("nom") || "")];
-      // Champs présents selon la page : Organisation (contact), Entreprise et Fonction (page Entreprises)
-      [["organisation", "Organisation"], ["entreprise", "Entreprise"], ["fonction", "Fonction"]].forEach(function (f) {
+      // Champs présents selon la page : Organisation (contact), Entreprise, Fonction, Téléphone (pages dédiées)
+      [["organisation", "Organisation"], ["entreprise", "Entreprise"], ["fonction", "Fonction"], ["telephone", "Téléphone"]].forEach(function (f) {
         if (data.has(f[0])) lines.push(f[1] + " : " + (data.get(f[0]) || ""));
       });
-      lines.push(
-        "Email : " + (data.get("email") || ""),
-        "Type de projet : " + (data.get("type_projet") || ""),
-        "Lieu : " + (data.get("lieu") || ""),
-        "Budget indicatif : " + (data.get("budget") || "")
-      );
+      lines.push("Email : " + (data.get("email") || ""));
+      [["type_projet", "Type de projet"], ["lieu", "Lieu"], ["budget", "Budget indicatif"]].forEach(function (f) {
+        if (data.has(f[0])) lines.push(f[1] + " : " + (data.get(f[0]) || ""));
+      });
       if (data.get("origine")) lines.push("Origine : " + data.get("origine"));
-      lines.push("", (data.get("message") || ""));
+      // Questions libres : tout champ portant data-mail-label est repris sous son intitulé
+      var extras = {};
+      contactForm.querySelectorAll("[data-mail-label]").forEach(function (el) {
+        if (!(el.name in extras)) extras[el.name] = el.getAttribute("data-mail-label");
+      });
+      Object.keys(extras).forEach(function (name) {
+        var value = data.get(name);
+        if (value) lines.push("", extras[name] + " :", value);
+      });
+      if (data.has("message")) lines.push("", (data.get("message") || ""));
 
       var subject = encodeURIComponent("Nouveau projet - " + (data.get("type_projet") || "Delwood"));
       var body = encodeURIComponent(lines.join("\n"));
